@@ -132,21 +132,22 @@ class Scan2CAD(object):
             self.validation_data_frame.reset_index(inplace=True)
             self.validation_filepaths =  self.validation_data_frame['Filepath']
             self.validation_cad_ids = self.validation_data_frame['ID']
-            # print("MISSING Validation Labels (not in train set):")
-            # print(len([id for id in self.validation_cad_ids.unique() if id not in self.train_cad_ids.unique()]))
-            # print("----"*10)
+            print("MISSING Validation Labels (not in train set):")
+            print(len([id for id in self.validation_cad_ids.unique() if id not in self.train_cad_ids.unique()]))
+            print("----"*10)
 
 
             self.test_data_frame = rest_of_data_frame.iloc[test_indices]
             self.test_data_frame.reset_index(inplace=True)
             self.test_filepaths =  self.test_data_frame['Filepath']
             self.test_cad_ids = self.test_data_frame['ID']
-            # print("MISSING Test Labels :")
-            # print(len([id for id in self.test_cad_ids.unique() if id not in self.train_cad_ids.unique()]))
-            # print("----"*10)
-            train_indices_lst = self.train_data_frame.index.tolist()
+            print("MISSING Test Labels :")
+            print(len([id for id in self.test_cad_ids.unique() if id not in self.train_cad_ids.unique()]))
+            print("----"*10)
+
+            # train_indices_lst = self.train_data_frame.index.tolist()
             # val_indices_lst = self.validation_data_frame.index.tolist()
-            test_indices_lst = self.test_data_frame.index.tolist()
+            # test_indices_lst = self.test_data_frame.index.tolist()
 
 
 
