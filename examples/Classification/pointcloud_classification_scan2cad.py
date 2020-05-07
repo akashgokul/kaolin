@@ -41,16 +41,18 @@ data_frame.rename(columns={data_frame.columns[0]:'Filepath', data_frame.columns[
 train_dataset = Scan2CAD(data_frame,split='train',transform=transform, device=args.device)
 print("Number of Classes:")
 print(train_dataset.get_num_classes())
+print("\n Number of Train Samples: ")
+print(len(train_dataset))
 train_loader = DataLoader(train_dataset,batch_size=args.batch_size, shuffle=True)
 
 val_dataset = Scan2CAD(data_frame,split='validation',transform=transform, device=args.device)
-print("Number of Validation Samples")
+print("\n Number of Validation Samples")
 print(len(val_dataset))
 val_loader = DataLoader(val_dataset,batch_size=1, shuffle=True)
 
 test_dataset = Scan2CAD(data_frame,split='test',transform=transform, device=args.device)
 test_loader = DataLoader(test_dataset,batch_size=1, shuffle=True)
-print("Number of Test Samples: ")
+print("\n Number of Test Samples: ")
 print(len(test_dataset))
 
 
