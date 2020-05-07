@@ -16,7 +16,7 @@ from utils import visualize_batch
 import pandas as pd
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--run_number', type = int, default = 0, help='Run Number of log')
+parser.add_argument('--run_number', type = str, default = '0', help='Run Number of log')
 parser.add_argument('--tensorboard', type = bool, default = False, help='T/F To use Tensorboard or not')
 #parser.add_argument('--modelnet-root', type=str, help='Root directory of the ModelNet dataset.')
 #parser.add_argument('--categories', type=str, nargs='+', default=['chair', 'sofa'], help='list of object classes to use.')
