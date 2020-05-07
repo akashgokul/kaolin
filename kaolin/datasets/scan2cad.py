@@ -100,7 +100,7 @@ class Scan2CAD(object):
             #Does the data split
             ct_cad_ids = cad_ids.value_counts()
             s = ct_cad_ids.to_frame(name='Count')
-            single_ct_labels = s[s['Count'] <= 5]
+            single_ct_labels = s[s['Count'] <= 4]
             single_ct_labels = single_ct_labels.index.tolist()
             single_indices = []
             for index, row in data_frame.iterrows():
