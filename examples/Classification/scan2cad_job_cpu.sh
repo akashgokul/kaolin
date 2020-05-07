@@ -1,6 +1,6 @@
 #!/bin/bash
 # Job name:
-#SBATCH --job-name=scan2cad_transf_may3
+#SBATCH --job-name=scan2cad_transf5_512
 #
 # Account:
 #SBATCH --account=fc_vivelab
@@ -26,4 +26,4 @@
 module load python
 # module load cuda/10.1
 source activate /global/scratch/akashgokul/kaolin_run
-python3 pointcloud_classification_scan2cad.py --epochs 100 --run_number transf4_512 --batch-size 512
+python3 pointcloud_classification_scan2cad.py --epochs 100 --run_number transf5_512 --batch-size 512
