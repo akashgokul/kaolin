@@ -17,7 +17,7 @@ import pandas as pd
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--run_number', type = int, default = 0, help='Run Number of log')
-parser.add_argument('--tensorboard', type = bool, default = 0, help='T/F To use Tensorboard or not')
+parser.add_argument('--tensorboard', type = bool, default = False, help='T/F To use Tensorboard or not')
 #parser.add_argument('--modelnet-root', type=str, help='Root directory of the ModelNet dataset.')
 #parser.add_argument('--categories', type=str, nargs='+', default=['chair', 'sofa'], help='list of object classes to use.')
 parser.add_argument('--num-points', type=int, default=1024, help='Number of points to sample from meshes.')
@@ -35,18 +35,26 @@ transform = tfs.Compose([
     tfs.NormalizePointCloud()
 ])
 
-data_path = '/global/scratch/akashgokul/mined_scannet_chairs/data.csv'
+data_path = '/global/scratch/oafolabi/data/mined_scannet_chairs/data.csv'
 data_frame = pd.read_csv(data_path)
 data_frame.rename(columns={data_frame.columns[0]:'Filepath', data_frame.columns[1]:'ID'}, inplace=True)
 
 train_dataset = Scan2CAD(data_frame,split='train',transform=transform, device=args.device)
+print("Number of Classes:")
+print(train_dataset.get_num_classes())
+print("\n Number of Train Samples: ")
+print(len(train_dataset))
 train_loader = DataLoader(train_dataset,batch_size=args.batch_size, shuffle=True)
 
 val_dataset = Scan2CAD(data_frame,split='validation',transform=transform, device=args.device)
-val_loader = DataLoader(val_dataset,batch_size=args.batch_size // 2, shuffle=True)
+print("\n Number of Validation Samples")
+print(len(val_dataset))
+val_loader = DataLoader(val_dataset,batch_size=1, shuffle=True)
 
 test_dataset = Scan2CAD(data_frame,split='test',transform=transform, device=args.device)
-test_loader = DataLoader(test_dataset,batch_size=args.batch_size // 2, shuffle=True)
+test_loader = DataLoader(test_dataset,batch_size=1, shuffle=True)
+print("\n Number of Test Samples: ")
+print(len(test_dataset))
 
 #Same num_classes for all datasets
 num_cad_classes = train_dataset.get_num_classes()
@@ -153,9 +161,9 @@ print('Test accuracy:', 100 * test_acc)
     
 if(not args.tensorboard):
     plt.figure()
-    plt.plot(np.array(train_acc_lst), label='train_acc', color = blue)
-    plt.plot(np.array(val_acc_lst),label='val_acc', color = yellow)
-    plt.plot(np.array(test_acc_lst), label='test_acc', color = red)
+    plt.plot(np.array(train_acc_lst), label='train_acc', color = 'blue')
+    plt.plot(np.array(val_acc_lst),label='val_acc', color = 'yellow')
+    plt.plot(np.array(test_acc_lst), label='test_acc', color = 'red')
     plt.title("Train Acc vs Validation Acc")
     plt.legend()
     plt.xlabel("Epoch Number")
@@ -163,8 +171,8 @@ if(not args.tensorboard):
     plt.savefig('pointnet2_run_' + str(args.run_number) + "_accuracies_plot.png")
 
     plt.figure()
-    plt.plot(np.array(train_loss_lst), label='train_loss', color = blue)
-    plt.plot(np.array(val_loss_lst),label='val_loss', color = yellow)
+    plt.plot(np.array(train_loss_lst), label='train_loss', color = 'blue')
+    plt.plot(np.array(val_loss_lst),label='val_loss', color = 'yellow')
     plt.title("Train Loss vs Validation Loss")
     plt.legend()
     plt.xlabel("Epoch Number")
