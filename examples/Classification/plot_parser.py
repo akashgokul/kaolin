@@ -2,13 +2,13 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-# train_loss = np.load(os.getcwd() + "/newdata_runs/train_loss_full_transf5_128.npy")
-# val_loss = np.load(os.getcwd() + "/newdata_runs/val_loss_full_transf5_128.npy")
+# train_loss = np.load(os.getcwd() + "/p2_runs/train_loss_full_p2_invtf_1.npy")
+# val_loss = np.load(os.getcwd() + "/p2_runs/val_loss_full_p2_invtf_1.npy")
 # print(train_loss)
 # print(train_loss.shape)
 
-train_acc = np.load(os.getcwd() + "/newdata_runs/train_acc_full_transf5_128.npy")
-val_acc = np.load(os.getcwd() + "/newdata_runs/val_acc_full_transf5_128.npy")
+train_acc = np.load(os.getcwd() + "/p2_runs/train_acc_full_p2_invtf_1.npy")
+val_acc = np.load(os.getcwd() + "/p2_runs/val_acc_full_p2_invtf_1.npy")
 print(val_acc)
 
 plt.figure()
@@ -18,7 +18,7 @@ plt.xlabel("Epoch Number")
 plt.ylabel("Accuracy (%)")
 plt.legend()
 plt.title("Training and Validation Accuracies of Pointnet")
-plt.savefig("accuracies_transf5_128.png")
+plt.savefig("accuracies_p2_invtf_1.png")
 
 # plt.figure()
 # plt.plot(np.array(train_loss), label='Training Loss')
@@ -27,4 +27,4 @@ plt.savefig("accuracies_transf5_128.png")
 # plt.ylabel("Loss (Cross-Entropy)")
 # plt.legend()
 # plt.title("Training and Validation Losses of Pointnet")
-# plt.savefig("losses_transf5_128.png")
+# plt.savefig("losses_p2_invtf_1.png")
