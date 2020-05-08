@@ -1,6 +1,6 @@
 #!/bin/bash
 # Job name:
-#SBATCH --job-name=scan2cad_apr_29_2020
+#SBATCH --job-name=scan2cad_p2
 #
 # Account:
 #SBATCH --account=fc_vivelab
@@ -15,10 +15,10 @@
 #SBATCH --ntasks-per-node=1
 #
 #Request GPUs
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 #
 #Request CPU
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=4
 #
 # Wall clock limit:
 #SBATCH --time=72:00:00
