@@ -43,7 +43,7 @@ for scene in scenes:
 
 data = pd.DataFrame.from_dict(chair_id_dict, orient='index')
 print(data)
-data_dir = ROOTDIR + "data.csv"
+data_dir = ROOTDIR + "data_savio.csv"
 data.to_csv(path_or_buf=data_dir)
 print("------"*10)
 print("Done! \n Data can be found at: " + data_dir)
