@@ -198,8 +198,8 @@ np.save('train_loss_full_'+args.run_number, np.array(train_loss_lst))
 np.save('val_acc_full_'+args.run_number, np.array(val_acc_lst))
 np.save('val_loss_full_'+args.run_number, np.array(val_loss_lst))
 
-
-
+torch.save(model, 'pointnet_model_' + args.run_number + '.pt')
+torch.save(model.state_dict(), 'pointnet_model_state_dict' + args.run_number + '.pt')
 
 # test_batch, labels = next(iter(test_loader))
 # preds = model(test_batch)

@@ -18,10 +18,10 @@
 #SBATCH --gres=gpu:1
 #
 #Request CPU
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #
 # Wall clock limit:
-#SBATCH --time=72:00:00
+#SBATCH --time=24:00:00
 #
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=akashgokul@berkeley.edu
